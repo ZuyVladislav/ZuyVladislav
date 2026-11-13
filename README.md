@@ -21,7 +21,8 @@ Selected commercial systems and production case studies are showcased at [vladis
 | [ai-workflow-backend](https://github.com/ZuyVladislav/ai-workflow-backend) | Production template for structured LLM workflows, PII masking, idempotent jobs, and CI | Python, FastAPI, Pydantic, PostgreSQL, Docker |
 | [ha-infra-blueprint](https://github.com/ZuyVladislav/ha-infra-blueprint) | Zero-downtime atomic symlink releases with rollback trap, WireGuard mesh audit, Nginx TLS, and PG backups | Bash, Python, Nginx, WireGuard, PostgreSQL |
 | [antigravity-ru-localizer](https://github.com/ZuyVladislav/antigravity-ru-localizer) | Local static UI localizer and compatibility patcher for Google Antigravity | JavaScript, Node.js, Cross-platform CI |
-| [adaptive-ipsec-overlay-android](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay-android) | Android client prototype & native crypto/overlay core with JNI bindings | Kotlin, Rust (JNI/NDK), Gradle |
+| [adaptive-ipsec-overlay (Android / Rust)](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay/tree/main/platforms/android) | Android client prototype & native crypto/overlay core with JNI bindings | Kotlin, Rust (JNI/NDK), Gradle |
+| [peernet-calc](https://github.com/ZuyVladislav/peernet-calc) | Analytical network topology and relay metric calculator for overlay research | Python, PyQt5 |
 
 ---
 
@@ -29,11 +30,13 @@ Selected commercial systems and production case studies are showcased at [vladis
 
 I also research and prototype routed IKE control-plane schemes where negotiation traverses selected intermediate nodes while ESP forwarding remains direct between endpoints after security associations are established (part of ongoing doctoral research in information security, passed candidate exam in Jan 2026).
 
-| Repository | Scope |
-| --- | --- |
-| [Adaptive-Secure-Overlay/adaptive-ipsec-overlay](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay) | Project hub, core protocol, and cross-platform architecture |
-| [Adaptive-Secure-Overlay/adaptive-ipsec-overlay-linux](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay-linux) | Linux endpoint and intermediate-node package |
-| [Adaptive-Secure-Overlay/adaptive-ipsec-overlay-openwrt](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay-openwrt) | OpenWRT endpoint and intermediate-node package |
-| [Adaptive-Secure-Overlay/adaptive-ipsec-overlay-routeros7](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay-routeros7) | MikroTik RouterOS 7 container profile for intermediate nodes |
-| [Adaptive-Secure-Overlay/adaptive-ipsec-overlay-android](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay-android) | Kotlin + Rust JNI Android client prototype |
-| [Adaptive-Secure-Overlay/adaptive-ipsec-overlay-windows](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay-windows) | C# Windows endpoint and service lifecycle prototype |
+All components are consolidated into a single public monorepo — [**Adaptive-Secure-Overlay/adaptive-ipsec-overlay**](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay) (shared core separated from per-OS implementations):
+
+| Module | Scope | Stack |
+| --- | --- | --- |
+| [`core/`](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay/tree/main/core) | Core routed IKE control-plane protocol, topology & state model | Python |
+| [`platforms/linux/`](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay/tree/main/platforms/linux) | Linux endpoint and intermediate-node deployment package | Python, strongSwan, nftables, systemd |
+| [`platforms/openwrt/`](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay/tree/main/platforms/openwrt) | OpenWRT router endpoint and intermediate relay package | Shell, strongSwan, nftables, init.d |
+| [`platforms/routeros7/`](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay/tree/main/platforms/routeros7) | MikroTik RouterOS 7 container profile for intermediate nodes | Docker, Python |
+| [`platforms/android/`](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay/tree/main/platforms/android) | Android client prototype and JNI native core | Kotlin, Rust (JNI/NDK), Gradle |
+| [`platforms/windows/`](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay/tree/main/platforms/windows) | Windows endpoint and service lifecycle prototype | C# / .NET |
