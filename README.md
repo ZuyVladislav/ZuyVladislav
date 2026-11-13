@@ -28,7 +28,7 @@ Selected commercial systems and production case studies are showcased at [vladis
 
 ## Adaptive IPsec & Overlay Networking Lab
 
-I also research and prototype routed IKE control-plane schemes where negotiation traverses selected intermediate nodes while ESP forwarding remains direct between endpoints after security associations are established (part of ongoing doctoral research in information security, passed candidate exam in Jan 2026).
+I also research and prototype routed IKE control-plane schemes where negotiation traverses selected intermediate nodes while ESP forwarding runs directly between endpoints once security associations are established.
 
 All components are consolidated into a single public monorepo — [**Adaptive-Secure-Overlay/adaptive-ipsec-overlay**](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay) (shared core separated from per-OS implementations):
 
